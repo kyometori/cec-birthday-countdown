@@ -30,7 +30,13 @@ export default function CharacterCard(props: CharacterInfo) {
 	const distance = ~~(((+birthday_date) - +(now)) / 1000)
 
 	return (
-		<Card sx={{ display: 'flex', gap: '20px', padding: '15px', backgroundColor: props.bgColor ?? 'white' }}>
+		<Card sx={{ 
+			display: 'flex', 
+			gap: '20px', 
+			alignItems: 'center', 
+			padding: '15px', 
+			backgroundColor: props.bgColor ?? 'white'
+		}}>
       <CardMedia
         component="img"
         image={props.avatar}
@@ -42,10 +48,12 @@ export default function CharacterCard(props: CharacterInfo) {
 	        <Typography component="div" variant="h5">
 	          {props.name}
 	        </Typography>
-	        <Typography component="div">
-	        	{isBirthday && "生日快樂"}
-	        	{!isBirthday && formatSecond(distance)}
-	        </Typography>
+	        {isBirthday && <Typography component="div" variant="h5" color="red">
+	        	生日快樂！
+	        </Typography>}
+	        {!isBirthday && <Typography component="div">
+	        	{`${month} 月 ${date} 日`} <br /> {`還有 ${formatSecond(distance)}`}
+	        </Typography>}
         </CardContent>
       </Box>
     </Card>

@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardContent, Grid, Stack, Typography } from '@mui/material'
+import { Avatar, Button, Card, CardContent, Grid, Stack, Typography, useMediaQuery } from '@mui/material'
 import { useContext } from 'react'
 import Time from './Time'
 import Popup from 'reactjs-popup'
@@ -10,6 +10,8 @@ import { isSameDate } from '../utils/isSameDate'
 export default function LazyButton() {
 
 	const now = useContext(Time)
+
+	const g = useMediaQuery("(min-width: 600px)")
 
 	const k = info
 		.filter(i => isSameDate(now, i.birthday))
@@ -28,13 +30,21 @@ export default function LazyButton() {
 		.slice(0, 5)
 		.map(i => {
 			return (
-				<React.Fragment key={i.name}>
-					<Stack direction="row" spacing={2} alignItems="center" my={2}>
+				<Grid item lg={6} md={12}>
+				<Stack 
+					direction="row"
+					spacing={{ md: 2, xs: 1 }}
+					alignItems="center"
+					key={i.name}
+					my={2}
+				>
+					<Stack direction="row" spacing={{ md: 2, xs: 1 }} alignItems="center">
 						<Avatar alt={i.name} src={i.avatar} />
 						<Typography component="div">{i.name}</Typography>
-						<Typography component="div">{i.birthday[0]} 月 {i.birthday[1]} 日</Typography>
 					</Stack>
-				</React.Fragment>
+					{g && <Typography component="div">{i.birthday[0]} 月 {i.birthday[1]} 日</Typography>}
+				</Stack>
+				</Grid>
 			)
 		})
 
@@ -81,7 +91,7 @@ export default function LazyButton() {
 	  				即將到來
 	  			</Typography>
 	  			<Typography component="div" variant="h6">
-		  			{j.length ? j : '無'}
+		  			{j.length ? <Grid container>{j}</Grid> : '無'}
   				</Typography>
   			</CardContent>
   		</Card>

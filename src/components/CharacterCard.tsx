@@ -1,6 +1,7 @@
 import { Box, Card, CardMedia, CardContent, Typography } from '@mui/material'
 import { useContext } from 'react'
 import { formatSecond } from '../utils/formatSecond'
+import { isSameDate } from '../utils/isSameDate'
 import Time from './Time'
 
 interface CharacterInfo {
@@ -16,7 +17,7 @@ export default function CharacterCard(props: CharacterInfo) {
 
 	const [currentMonth, currentDate] = [now.getMonth() + 1, now.getDate()]
 
-	const isBirthday = currentMonth === month && currentDate === date
+	const isBirthday = isSameDate(now, props.birthday)
 
 	let upcoming_bd_year = 0
 

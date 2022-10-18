@@ -2,14 +2,15 @@ import { Avatar, Button, Card, CardContent, Grid, Stack, Typography, useMediaQue
 import { useContext } from 'react'
 import Time from './Time'
 import Popup from 'reactjs-popup'
-import React from 'react'
+import React, { useState } from 'react'
 import info from '../data/info'
 import { compareDate } from '../utils/compareDate'
 import { isSameDate } from '../utils/isSameDate'
+import CloseButton from './CloseButton'
 
 export default function LazyButton() {
-
 	const now = useContext(Time)
+	const [open, setOpen] = useState(false)
 
 	const g = useMediaQuery("(min-width: 600px)")
 
@@ -50,27 +51,31 @@ export default function LazyButton() {
 
 	return (
 		<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+		<Button
+	    variant="contained" 
+			color="secondary" 
+			sx={{ margin: '20px 0 40px' }}
+			size="large"
+			onClick={() => setOpen(true)}
+			disableFocusRipple
+		>
+			懶人包
+		</Button>
 		<Popup
-	    trigger={<Button
-		    variant="contained" 
-				color="secondary" 
-				sx={{ margin: '20px 0 40px' }}
-				size="large"
-				disableFocusRipple
-			>
-				懶人包
-			</Button>}
+			open={open}
 	    modal
 	    closeOnDocumentClick
+	    onClose={() => setOpen(false)}
 	  >
   		<Card sx={{ 
 				display: 'flex', 
 				flexDirection: 'column',
 				gap: '20px', 
-				padding: '15px', 
+				padding: '0px 50px', 
 				backgroundColor: 'hsla(0, 0%, 100%, 90%)',
 				width: '40vw'
 			}}>
+				<CloseButton onClose={() => setOpen(false)} />
   			<CardContent>
   				<Typography component="div" variant="h5" my={2}>
 	  				本日壽星

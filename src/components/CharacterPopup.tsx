@@ -1,15 +1,12 @@
 import { Card, CardMedia } from '@mui/material'
 import Popup from 'reactjs-popup'
+import CloseButton from './CloseButton'
 
 interface Info {
 	isOpen: boolean
 	onClose: () => void
 	name: string
 	img: string
-}
-
-interface CloseButtonProps {
-	onClose: () => void
 }
 
 export default function CharacterCard(props: Info) {
@@ -26,27 +23,4 @@ export default function CharacterCard(props: Info) {
     	</Card>
     </Popup>
    )
-}
-
-function CloseButton(props: CloseButtonProps) {
-    return (
-    	<button
-    		style={{ 
-    			position: 'absolute',
-    			width: '50px', 
-    			height: '50px',
-    			border: 'none', 
-    			outline: 'none', 
-    			backgroundColor: 'transparent',
-    			opacity: 0.9,
-    			fontSize: '30px',
-    			margin: '0', 
-    			padding: '10px',
-    			cursor: 'pointer'
-    		}}
-    		onClick={props.onClose}
-    	>
-    		&times;
-    	</button>
-  	)
 }

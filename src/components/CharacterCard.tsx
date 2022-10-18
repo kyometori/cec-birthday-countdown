@@ -1,18 +1,22 @@
 import { Box, Card, CardMedia, CardContent, Typography } from '@mui/material'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { formatSecond } from '../utils/formatSecond'
 import { isSameDate } from '../utils/isSameDate'
 import Time from './Time'
+import CharacterPopup from './CharacterPopup'
 
 interface CharacterInfo {
 	name: string,
 	avatar: string,
 	birthday: [number, number],
+	popupImage: string, 
 	bgColor?: string
 }
 
 export default function CharacterCard(props: CharacterInfo) {
 	const [month, date] = props.birthday
+	const [shadow, setShadow] = useState(3)
+	const [open, setOpen] = useState(false)
 	const now = useContext(Time)
 
 	const [currentMonth, currentDate] = [now.getMonth() + 1, now.getDate()]
@@ -32,13 +36,20 @@ export default function CharacterCard(props: CharacterInfo) {
 	const distance = ~~(((+birthday_date) - +(now)) / 1000)
 
 	return (
+		<>
 		<Card sx={{ 
 			display: 'flex', 
 			gap: '20px', 
 			alignItems: 'center', 
 			padding: '15px', 
-			backgroundColor: props.bgColor ?? 'white'
-		}}>
+			backgroundColor: props.bgColor ?? 'white',
+			cursor: "pointer"
+		}}
+			elevation={shadow}
+			onMouseEnter={() => setShadow(24)}
+      onMouseLeave={() => setShadow(3)}
+      onClick={() => setOpen(true)}
+    >
       <CardMedia
         component="img"
         image={props.avatar}
@@ -59,5 +70,12 @@ export default function CharacterCard(props: CharacterInfo) {
         </CardContent>
       </Box>
     </Card>
+    <CharacterPopup 
+    	isOpen={open}
+    	onClose={() => setOpen(false)}
+    	name={props.name} 
+    	img={props.popupImage}
+    />
+    </>
   )
 }

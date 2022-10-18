@@ -22,6 +22,7 @@ function App() {
                 name={i.name}
                 avatar={i.avatar}
                 bgColor={i.bg_color}
+                popupImage={i.popupImage}
                 birthday={i.birthday}
               />
             </Grid>

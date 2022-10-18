@@ -36,10 +36,10 @@ function CloseButton(props: CloseButtonProps) {
     			width: '50px', 
     			height: '50px',
     			border: 'none', 
-    			backgroundColor: 'white',
+    			outline: 'none', 
+    			backgroundColor: 'transparent',
     			opacity: 0.9,
     			fontSize: '30px',
-    			// borderRadius: '50%',
     			margin: '0', 
     			padding: '10px',
     			cursor: 'pointer'

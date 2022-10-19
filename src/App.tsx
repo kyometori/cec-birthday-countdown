@@ -7,7 +7,7 @@ import info from './data/info'
 
 function App() {
   const [now, setNow] = useState(new Date())
-  // setInterval(() => setNow(new Date()), 1e3)
+  setInterval(() => setNow(new Date()), 1e3)
   return (
     <>
       <Typography mt={5} textAlign="center" variant="h3">

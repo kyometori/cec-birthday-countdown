@@ -18,7 +18,7 @@ export default function LazyButton() {
 		.filter(i => isSameDate(now, i.birthday))
 		.map(i => {
 			return (
-				<Stack direction="row" spacing={2} alignItems="center" my={2}>
+				<Stack direction="row" spacing={2} alignItems="center" my={2} key={i.name}>
 					<Avatar alt={i.name} src={i.avatar} />
 					<Typography component="div">{i.name}</Typography>
 				</Stack>
@@ -31,12 +31,11 @@ export default function LazyButton() {
 		.slice(0, 5)
 		.map(i => {
 			return (
-				<Grid item lg={6} md={12}>
+				<Grid item lg={6} md={12} key={i.name}>
 				<Stack 
 					direction="row"
 					spacing={{ md: 2, xs: 1 }}
 					alignItems="center"
-					key={i.name}
 					my={2}
 				>
 					<Stack direction="row" spacing={{ md: 2, xs: 1 }} alignItems="center">

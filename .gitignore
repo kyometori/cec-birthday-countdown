@@ -4,6 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
+yarn.lock
+
+# editor
+*.swp
 
 # testing
 /coverage

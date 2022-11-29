@@ -14,7 +14,7 @@ function Footer() {
 			color: 'hsl(230, 80%, 80%)'
 		}}>
 			<Typography component="div">
-				Made by <Link href="https://linktr.ee/AC0xRPFS001" wrapped={false}>AC0xRPFS001</Link>.
+				Made with <span style={{ color: '#e25555' }}>&hearts;</span> by <Link href="https://linktr.ee/AC0xRPFS001" wrapped={false}>AC0xRPFS001</Link>.
 			</Typography>
 			<div style={{ display: 'flex', flexDirection: 'row-reverse', gap: '10px' }}>
 				<Link href="https://github.com/kyometori/cec-birthday-countdown/">Source</Link>

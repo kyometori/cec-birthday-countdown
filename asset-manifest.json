@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/cec-birthday-countdown/static/css/main.899a4e38.css",
-    "main.js": "/cec-birthday-countdown/static/js/main.923a779c.js",
+    "main.js": "/cec-birthday-countdown/static/js/main.59eddde1.js",
     "index.html": "/cec-birthday-countdown/index.html",
     "main.899a4e38.css.map": "/cec-birthday-countdown/static/css/main.899a4e38.css.map",
-    "main.923a779c.js.map": "/cec-birthday-countdown/static/js/main.923a779c.js.map"
+    "main.59eddde1.js.map": "/cec-birthday-countdown/static/js/main.59eddde1.js.map"
   },
   "entrypoints": [
     "static/css/main.899a4e38.css",
-    "static/js/main.923a779c.js"
+    "static/js/main.59eddde1.js"
   ]
 }

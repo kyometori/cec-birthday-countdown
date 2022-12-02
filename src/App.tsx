@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { useState } from 'react'
 import CharacterCard from './components/CharacterCard'
 import LazyButton from './components/LazyButton'
@@ -12,23 +12,22 @@ function App() {
   return (
     <>
       <Typography mt={5} textAlign="center" variant="h3">
-        告白實行委員會生日倒計時
+        <span className="line">告白實行委員會</span>
+        <span className="line">生日倒計時</span>
       </Typography>
       <Time.Provider value={now}>
         <LazyButton />
-        <Grid container spacing={{ lg: 2, xs: 1 }} padding={2}>
+        <div id="main-grid">
           {info.map(i => (
-            <Grid item lg={4} md={6} sm={12} key={i.name}>
-              <CharacterCard
-                name={i.name}
-                avatar={i.avatar}
-                bgColor={i.bg_color}
-                popupImage={i.popupImage}
-                birthday={i.birthday}
-              />
-            </Grid>
+            <CharacterCard
+              name={i.name}
+              avatar={i.avatar}
+              bgColor={i.bg_color}
+              popupImage={i.popupImage}
+              birthday={i.birthday}
+            />
           ))}
-        </Grid>
+        </div>
       </Time.Provider>
       <div style={{ height: '100px' }} />
       <Footer />

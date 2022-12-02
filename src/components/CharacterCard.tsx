@@ -45,6 +45,7 @@ export default function CharacterCard(props: CharacterInfo) {
 			backgroundColor: props.bgColor ?? 'white',
 			cursor: "pointer"
 		}}
+      className="character-card"
 			elevation={shadow}
 			onMouseEnter={() => setShadow(24)}
       onMouseLeave={() => setShadow(3)}

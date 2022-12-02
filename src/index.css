@@ -13,3 +13,36 @@ a {
 a:hover {
 	filter: brightness(1.2);
 }
+
+#main-grid {
+  display: grid;
+  padding: 0px 5px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.line {
+  white-space: nowrap;
+}
+
+.character-card {
+}
+
+@media (max-width: 1200px) {
+  .character-card {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 865px) {
+  #main-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 570px) {
+  #main-grid {
+    grid-template-columns: 1fr;
+    padding: 0px 10px;
+  }
+}

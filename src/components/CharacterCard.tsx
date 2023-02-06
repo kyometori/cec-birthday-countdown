@@ -37,46 +37,46 @@ export default function CharacterCard(props: CharacterInfo) {
 
 	return (
 		<>
-		<Card sx={{ 
-			display: 'flex', 
-			gap: '20px', 
-			alignItems: 'center', 
-			padding: '15px', 
-			backgroundColor: props.bgColor ?? 'white',
-			cursor: "pointer"
-		}}
-      className="character-card"
-			elevation={shadow}
-			onMouseEnter={() => setShadow(24)}
-      onMouseLeave={() => setShadow(3)}
-      onClick={() => setOpen(true)}
-    >
-      <CardMedia
-        component="img"
-        image={props.avatar}
-        sx={{ width: '150px' }}
-        alt={props.name}
+      <Card sx={{ 
+        display: 'flex', 
+        gap: '20px', 
+        alignItems: 'center', 
+        padding: '15px', 
+        backgroundColor: props.bgColor ?? 'white',
+        cursor: "pointer"
+      }}
+        className="character-card"
+        elevation={shadow}
+        onMouseEnter={() => setShadow(24)}
+        onMouseLeave={() => setShadow(3)}
+        onClick={() => setOpen(true)}
+      >
+        <CardMedia
+          component="img"
+          image={props.avatar}
+          sx={{ width: '150px' }}
+          alt={props.name}
+        />
+        <Box>
+          <CardContent>
+            <Typography component="div" variant="h5">
+              {props.name}
+            </Typography>
+            {isBirthday && <Typography component="div" variant="h5" color="red">
+              生日快樂！
+            </Typography>}
+            {!isBirthday && <Typography component="div">
+              {`${month} 月 ${date} 日`} <br /> {`還有 ${formatSecond(distance)}`}
+            </Typography>}
+          </CardContent>
+        </Box>
+      </Card>
+      <CharacterPopup 
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        name={props.name} 
+        img={props.popupImage}
       />
-      <Box>
-      	<CardContent>
-	        <Typography component="div" variant="h5">
-	          {props.name}
-	        </Typography>
-	        {isBirthday && <Typography component="div" variant="h5" color="red">
-	        	生日快樂！
-	        </Typography>}
-	        {!isBirthday && <Typography component="div">
-	        	{`${month} 月 ${date} 日`} <br /> {`還有 ${formatSecond(distance)}`}
-	        </Typography>}
-        </CardContent>
-      </Box>
-    </Card>
-    <CharacterPopup 
-    	isOpen={open}
-    	onClose={() => setOpen(false)}
-    	name={props.name} 
-    	img={props.popupImage}
-    />
     </>
   )
 }

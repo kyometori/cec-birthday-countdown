@@ -5,7 +5,7 @@ import LazyButton from './components/LazyButton'
 import Time from './components/Time'
 import Footer from './components/Footer'
 import info from './data/info'
-import { timeMachine } from './utils/timeMachine'
+// import { timeMachine } from './utils/timeMachine'
 
 function App() {
   const [now, setNow] = useState(new Date())
@@ -16,7 +16,7 @@ function App() {
         <span className="line">告白實行委員會</span>
         <span className="line">生日倒計時</span>
       </Typography>
-      <Time.Provider value={new Date(Date.now() + timeMachine(15, 20, 0, 0))}>
+      <Time.Provider value={now}>
         <LazyButton />
         <div id="main-grid">
           {info.map(i => (

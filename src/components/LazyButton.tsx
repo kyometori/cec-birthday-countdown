@@ -1,5 +1,5 @@
-import { Avatar, Button, Card, CardContent, Grid, Stack, Typography, useMediaQuery } from '@mui/material'
-import { useContext } from 'react'
+import { Avatar, Button, Card, CardContent, Typography } from '@mui/material'
+import { useContext, ReactNode } from 'react'
 import Time from './Time'
 import Popup from 'reactjs-popup'
 import React, { useState } from 'react'
@@ -12,39 +12,28 @@ export default function LazyButton() {
 	const now = useContext(Time)
 	const [open, setOpen] = useState(false)
 
-	const g = useMediaQuery("(min-width: 600px)")
-
-	const k = info
+	const happy_birthday  = info
 		.filter(i => isSameDate(now, i.birthday))
 		.map(i => {
 			return (
-				<Stack direction="row" spacing={2} alignItems="center" my={2} key={i.name}>
+				<div className="lazy-list-item" key={i.name}>
 					<Avatar alt={i.name} src={i.avatar} />
-					<Typography component="div">{i.name}</Typography>
-				</Stack>
+					<div className="lazy-list-item__name">{i.name}</div>
+				</div>
 			)
 		})
 
-	const j = info
+	const upcoming = info
 		.filter(i => !isSameDate(now, i.birthday))
 		.sort((i, u) => compareDate(i.birthday, u.birthday))
 		.slice(0, 5)
 		.map(i => {
 			return (
-				<Grid item lg={6} md={12} key={i.name}>
-				<Stack 
-					direction="row"
-					spacing={{ md: 2, xs: 1 }}
-					alignItems="center"
-					my={2}
-				>
-					<Stack direction="row" spacing={{ md: 2, xs: 1 }} alignItems="center">
-						<Avatar alt={i.name} src={i.avatar} />
-						<Typography component="div">{i.name}</Typography>
-					</Stack>
-					{g && <Typography component="div">{i.birthday[0]} 月 {i.birthday[1]} 日</Typography>}
-				</Stack>
-				</Grid>
+				<div className="lazy-list-item" key={i.name}>
+          <Avatar alt={i.name} src={i.avatar} />
+          <div className="lazy-list-item__name">{i.name}</div>
+          <div className="lazy-list-item__date">{i.birthday[0]} 月 {i.birthday[1]} 日</div>
+				</div>
 			)
 		})
 
@@ -66,40 +55,34 @@ export default function LazyButton() {
 	    closeOnDocumentClick
 	    onClose={() => setOpen(false)}
 	  >
-  		<Card sx={{ 
-				display: 'flex', 
-				flexDirection: 'column',
-				gap: '20px', 
-				padding: '0px 50px', 
-				backgroundColor: 'hsla(0, 0%, 100%, 90%)',
-				width: '40vw'
-			}}>
+  		<Card id="lazy-infocard">
 				<CloseButton onClose={() => setOpen(false)} />
   			<CardContent>
   				<Typography component="div" variant="h5" my={2}>
 	  				本日壽星
 	  			</Typography>
-	  			<Typography component="div" variant="h6">
-		  			{k.length ? 
-		  				<Grid container
-		  					direction="row" 
-		  					spacing={2}
-		  					justifyContent="center"
-		  				>
-		  					{k}
-		  				</Grid> : '無'}
-	  			</Typography>
+          {happy_birthday.length ? <BirthdayList>{happy_birthday}</BirthdayList> : '無'}
   			</CardContent>
   			<CardContent>
   				<Typography component="div" variant="h5">
 	  				即將到來
 	  			</Typography>
-	  			<Typography component="div" variant="h6">
-		  			{j.length ? <Grid container>{j}</Grid> : '無'}
-  				</Typography>
+          {upcoming.length ? <UpcomingList>{upcoming}</UpcomingList> : '無'}
   			</CardContent>
   		</Card>
   	</Popup>
   	</div>
   )
+}
+
+interface WrapperProps {
+  children: ReactNode
+}
+
+function BirthdayList(props: WrapperProps) {
+  return <div id="birthday-list">{props.children}</div>
+}
+
+function UpcomingList(props: WrapperProps) {
+  return <div id="upcoming-list">{props.children}</div>
 }

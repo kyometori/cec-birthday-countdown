@@ -25,6 +25,39 @@ a:hover {
   white-space: nowrap;
 }
 
+#lazy-infocard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px,;
+  padding: 0px 50px,;
+  background-color: hsla(0, 0%, 100%, 90%);
+  text-align: center;
+  width: 600px;
+}
+
+.lazy-list-item {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  height: 40px;
+  line-height: 40px;
+}
+
+#birthday-list {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#upcoming-list {
+  display: grid;
+  margin: 20px;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 15px;
+}
+
 .character-card {
 }
 
@@ -37,6 +70,7 @@ a:hover {
   justify-content: space-between;
   padding: 10px 30px;
   color: hsl(230, 80%, 80%);
+  text-align: center;
 }
 
 #footer .links {
@@ -44,6 +78,7 @@ a:hover {
   flex-direction: row-reverse;
   gap: 10px;
 }
+
 
 @media (max-width: 1200px) {
   .character-card {
@@ -57,10 +92,29 @@ a:hover {
   }
 }
 
+@media (max-width: 660px) {
+  #lazy-infocard {
+    width: 500px;
+  }
+}
+
 @media (max-width: 570px) {
   #main-grid {
     grid-template-columns: 1fr;
     padding: 0px 10px;
+  }
+
+  #lazy-infocard {
+    width: 400px;
+  }
+
+  #upcoming-list {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  #upcoming-list > div {
+    width: 210px; 
   }
 }
 
@@ -70,9 +124,22 @@ a:hover {
   }
 }
 
-@media (max-width: 400px) {
-  .lazybutton-name {
+@media (max-width: 430px) {
+  .lazy-list-item__date {
     display: none;
+  }
+
+  #lazy-infocard {
+    width: 80vw;
+  }
+
+  #birthday-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #upcoming-list > div {
+    width: auto;
   }
 }
 
@@ -86,8 +153,19 @@ a:hover {
   #title {
     font-size: 25px;
   }
-}
 
-/*****
- I don't care about smaller screens.
-*****/
+  .lazy-list-item__name { 
+    display: none;
+  }
+
+  #birthday-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #upcoming-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}

@@ -28,6 +28,23 @@ a:hover {
 .character-card {
 }
 
+#footer {
+  background-color: hsl(230, 60%, 40%);
+  height: 60px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  color: hsl(230, 80%, 80%);
+}
+
+#footer .links {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+
 @media (max-width: 1200px) {
   .character-card {
     flex-direction: column;
@@ -46,3 +63,31 @@ a:hover {
     padding: 0px 10px;
   }
 }
+
+@media (max-width: 550px) {
+  #footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .lazybutton-name {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  #title {
+    font-size: 38px; 
+  }
+}
+
+@media (max-width: 270px) {
+  #title {
+    font-size: 25px;
+  }
+}
+
+/*****
+ I don't care about smaller screens.
+*****/
